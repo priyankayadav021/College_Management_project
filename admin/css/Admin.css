@@ -1,0 +1,9 @@
+.image{
+    background-image: url('https://images.wallpaperscraft.com/image/headphones_books_education_121501_2560x1440.jpg');
+    height:650px;
+}
+
+.nav-item {
+    float: left;
+    color:light;
+}
