@@ -169,13 +169,13 @@
               if(result=="available"){
                 $("#hasclass").addClass("has-success");
                 $("#hasclass").removeClass("has-error");
-                $("#validate-add-year").html('<i class="glyphicon glyphicon-ok"></i> available');
+                $("#validate-add-year").html('<i class="glyphicon glyphicon-ok"></i> not available');
 
               }
               else{
                 $("#hasclass").addClass("has-error");
                 $("#hasclass").removeClass("has-success");
-                $("#validate-add-year").html('<i class="glyphicon glyphicon-remove"></i> not available');
+                $("#validate-add-year").html('<i class="glyphicon glyphicon-remove"></i> available, try another');
                 $("#save").addClass("disabled");
               }
             }

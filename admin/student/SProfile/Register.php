@@ -101,9 +101,7 @@
 				<div class="col-md-3 ftr_navi ftr">
 					<h3>NAVIGATION</h3>
 					<ul>
-					<li>
-							<a href="../../Homepage/index.php">Home</a>
-						</li>
+					
 						<li>
 							<a href="../SProfile/index.php">Student Login</a>
 						</li>

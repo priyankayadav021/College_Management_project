@@ -38,7 +38,7 @@
           <div class="square"></div>
 		  <?php
 		  $Welcome = "Welcome";
-          echo "<h1>" . $Welcome . "<br>". $_SESSION['username']. "</h1>";
+          echo "<h1>" . $Welcome . "<br>". $_SESSION['semail']. "</h1>";
 		  ?>
         </header>
         <div class="profile-photo-container">
@@ -58,7 +58,7 @@
         <nav class="templatemo-left-nav">
           <ul>
             <li>
-              <a href="preferences.php"><i class="fa fa-sliders fa-fw"></i>Preferences</a>
+              <a href="./New Folder1/preferences.php"><i class="fa fa-sliders fa-fw"></i>Preferences</a>
             </li>
             <li>
               <a href="logout.php"><i class="fa fa-eject fa-fw"></i>Sign Out</a>
@@ -76,11 +76,9 @@
                   <a href="../Drives/index.php">Drives Homepage</a>
                 </li>
                 <li>
-                  <a href="Notif.php">Notifications</a>
+                  <a href="./Notif.php">Notifications</a>
                 </li>
-                <li>
-                  <a href="Change Password.php">Change Password</a>
-                  </li>
+               
               </ul>
             </nav>
           </div>

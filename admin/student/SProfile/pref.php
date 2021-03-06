@@ -1,7 +1,7 @@
 <?php
   session_start();
-  if($_SESSION["username"]){
-    echo "Welcome, ".$_SESSION['username']."!";
+  if($_SESSION["semail"]){
+    echo "Welcome, ".$_SESSION['semail']."!";
   }
    else {
 	   header("location: index.php");
@@ -16,7 +16,7 @@ if(isset($_POST['submit']))
 $fname = $_POST['Fname'];
 $lname = $_POST['Lname'];
 $USN = $_POST['USN'];
-$sun = $_SESSION["username"];
+$sun = $_SESSION["semail"];
 $phno = $_POST['Num'];
 $email = $_POST['Email'];
 $date = $_POST['DOB'];
@@ -58,7 +58,7 @@ if(isset($_POST['update']))
 $fname = $_POST['Fname'];
 $lname = $_POST['Lname'];
 $USN = $_POST['USN'];
-$sun = $_SESSION["username"];
+$sun = $_SESSION["semail"];
 $phno = $_POST['Num'];
 $email = $_POST['Email'];
 $date = $_POST['DOB'];

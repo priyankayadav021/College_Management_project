@@ -1,4 +1,4 @@
-!<DOCTYPE html> <head>
+<!DOCTYPE html> <head>
 <title>LOGIN</title>
 </head> 
 <body>

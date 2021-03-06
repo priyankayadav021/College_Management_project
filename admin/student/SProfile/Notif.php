@@ -1,7 +1,7 @@
 <?php
   session_start();
-  if($_SESSION["username"]){
-    echo "Welcome, ".$_SESSION['username']."!";
+  if($_SESSION["semail"]){
+    echo "Welcome, ".$_SESSION['semail']."!";
   }
    else {
 	   header("location: index.php");
@@ -46,7 +46,7 @@
          
 		  <?php
 		  $Welcome = "Welcome";
-          echo "<h1>" . $Welcome . "<br>". $_SESSION['username']. "</h1>";
+          echo "<h1>" . $Welcome . "<br>". $_SESSION['semail']. "</h1>";
 		  ?>
         </header>
         <div class="profile-photo-container">
@@ -86,9 +86,7 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                <li>
-                  <a href="../../Homepage/index.php" >Home CIT-PMS</a>
-                </li>
+               
                 <li>
                   <a href="">Drives Homepage</a>
                 </li>

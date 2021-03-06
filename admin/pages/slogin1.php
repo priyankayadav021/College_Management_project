@@ -19,9 +19,9 @@
 			}
 			if ($susername == $dbusername && $password == $dbpassword)
 			{
-				  echo "<center>Login Successfull..!! <br/>Redirecting you to HomePage! </br>If not Goto <a href='Main.php'> Here </a></center>";
-			  echo "<meta http-equiv='refresh' content ='3; url=Main.php'>";
-			  header("location: Main.php");
+				  echo "<center>Login Successfull..!! <br/>Redirecting you to HomePage! </br>If not Goto <a href='staffhome.php'> Here </a></center>";
+			  echo "<meta http-equiv='refresh' content ='3; url=staffhome.php'>";
+			  header("location: staffhome.php");
 				$_SESSION['staffemail'] = $susername;
 			} else{
 				$message = "Username and/or Password incorrect.";

@@ -198,15 +198,15 @@ function headertemplate($title){
                 <i class="glyphicon glyphicon-book"></i> <span>Subject Schedule</span>
               </a>
             </li>
-            <?php if($active=="teacherschedule"){ 
+            <?php if($active=="placement"){ 
               echo '<li class="active">';
             }
             else{
               echo '<li>';
             }
             ?>
-              <a href="teacherschedule.php">
-                <i class="glyphicon glyphicon-book"></i> <span>Teacher Schedule</span>
+              <a href="../PProfile/index1.php">
+                <i class="glyphicon glyphicon-list-alt"></i> <span>Placement</span>
               </a>
             </li>
           </ul>

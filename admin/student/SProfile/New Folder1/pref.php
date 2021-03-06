@@ -1,7 +1,7 @@
 <?php
   session_start();
-  if($_SESSION["username"]){
-    echo "Welcome, ".$_SESSION['username']."!";
+  if($_SESSION["semail"]){
+    echo "Welcome, ".$_SESSION['semail']."!";
   }
    else {
 	   header("location: index.php");
@@ -9,14 +9,14 @@
    
 ?>
 <?php
-$connect = mysql_connect("localhost", "root", ""); // Establishing Connection with Server
-mysql_select_db("details"); // Selecting Database from Server
+$connect = mysqli_connect("localhost", "root", ""); // Establishing Connection with Server
+mysqli_select_db($connect,"placement"); // Selecting Database from Server
 if(isset($_POST['submit']))
 { 
 $fname = $_POST['Fname'];
 $lname = $_POST['Lname'];
 $USN = $_POST['USN'];
-$sun = $_SESSION["username"];
+$sun = $_SESSION["semail"];
 $phno = $_POST['Num'];
 $email = $_POST['Email'];
 $date = $_POST['DOB'];
@@ -30,9 +30,9 @@ $hisofbk = $_POST['History'];
 $detyear = $_POST['Dety'];
 if($USN !=''||$email !='')
 {
-	if($USN == $sun)
+	if($email == $sun)
     {
-    if($query = mysql_query("INSERT INTO `details`.`basicdetails` ( `FirstName`, `LastName`, `USN`, `Mobile`, `Email`, `DOB`, `Sem`, `Branch`, `SSLC`, `PU/Dip`, `BE`, `Backlogs`, `HofBacklogs`, `DetainYears`, `Approve`) 
+    if($query = mysqli_query($connect,"INSERT INTO `placement`.`basicdetails` ( `FirstName`, `LastName`, `USN`, `Mobile`, `Email`, `DOB`, `Sem`, `Branch`, `SSLC`, `PU/Dip`, `BE`, `Backlogs`, `HofBacklogs`, `DetainYears`, `Approve`) 
           VALUES ('$fname', '$lname', '$USN', '$phno', '$email', '$date', '$cursem', '$branch', '$per', '$puagg', '$beaggregate', '$back', '$hisofbk', '$detyear', '0')"))
     {
 				echo "<center>Data Inserted successfully...!!</center>";
@@ -51,14 +51,14 @@ else{
 
 
 <?php
-$connect = mysql_connect("localhost", "root", ""); // Establishing Connection with Server
-mysql_select_db("details"); // Selecting Database from Server
+$connect = mysqli_connect("localhost", "root", ""); // Establishing Connection with Server
+mysqli_select_db($connect,"placement"); // Selecting Database from Server
 if(isset($_POST['update']))
 { 
 $fname = $_POST['Fname'];
 $lname = $_POST['Lname'];
 $USN = $_POST['USN'];
-$sun = $_SESSION["username"];
+$sun = $_SESSION["semail"];
 $phno = $_POST['Num'];
 $email = $_POST['Email'];
 $date = $_POST['DOB'];
@@ -73,15 +73,15 @@ $detyear = $_POST['Dety'];
 
 if($USN !=''||$email !='')
 {
-	if($USN == $sun)
+	if($email == $sun)
 	{
 		
-	$sql = mysql_query("SELECT * FROM `details`.`basicdetails` WHERE `USN`='$USN'");
-	if(mysql_num_rows($sql) == 1)
+	$sql = mysqli_query($connect,"SELECT * FROM `placement`.`basicdetails` WHERE `semail`='$email'");
+	if(mysqli_num_rows($sql) == 1)
 	{
   
-		if($query = mysql_query("UPDATE `details`.`basicdetails` SET `FirstName`='$fname', `LastName`='$lname', `Mobile`='$phno', `Email`='$email', `DOB`='$date', `Sem`='$cursem', `Branch`= '$branch', `SSLC`='$per', `PU/Dip`='$puagg', `BE`='$beaggregate', `Backlogs`='$back', `HofBacklogs`='$hisofbk', `DetainYears`='$detyear' ,`Approve`='0'
-           WHERE `basicdetails`.`USN` = '$USN'"))
+		if($query = mysqli_query($connect,"UPDATE `placement`.`basicdetails` SET `FirstName`='$fname', `LastName`='$lname', `Mobile`='$phno', `Email`='$email', `DOB`='$date', `Sem`='$cursem', `Branch`= '$branch', `SSLC`='$per', `PU/Dip`='$puagg', `BE`='$beaggregate', `Backlogs`='$back', `HofBacklogs`='$hisofbk', `DetainYears`='$detyear' ,`Approve`='0'
+           WHERE `basicdetails`.`semail` = '$email'"))
                {
 				echo "<center>Data Updated successfully...!!</center>";
                }

@@ -1,7 +1,7 @@
 <?php
   session_start();
-  if(isset($_SESSION["priusername"])){
-    echo "Welcome, ".$_SESSION['priusername']."!";
+  if(isset($_SESSION["staffemail"])){
+    echo "Welcome, ".$_SESSION['staffemail']."!";
   }
    else
 	   header("location: index.php");

@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if(isset($_SESSION["priusername"])){
+  if(isset($_SESSION["staffemail"])){
   }
    else
 	   header("location: index.php");
@@ -38,7 +38,7 @@
           <div class="square"></div>
          <?php
 		  $Welcome = "Welcome";
-          echo "<h1>" . $Welcome . "<br>". $_SESSION['priusername']. "</h1>";
+          echo "<h1>" . $Welcome . "<br>". $_SESSION['staffemail']. "</h1>";
 		  ?>
         </header>
         <div class="profile-photo-container">

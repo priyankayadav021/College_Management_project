@@ -1,7 +1,7 @@
 
 <?php
   session_start();
-  if(isset($_SESSION["priusername"])){
+  if(isset($_SESSION["staffemail"])){
    
   }
    else
@@ -40,7 +40,7 @@
           <div class="square"></div>
            <?php
 		  $Welcome = "Welcome";
-          echo "<h1>" . $Welcome . "<br>". $_SESSION['priusername']. "</h1>";
+          echo "<h1>" . $Welcome . "<br>". $_SESSION['staffemail']. "</h1>";
 		  ?>
         </header>
         <div class="profile-photo-container">
@@ -73,18 +73,12 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                   <li>
-                  <a href="../../Homepage/index.php">Home CIT-PMS</a>
-                </li>
                 <li>
-                  <a href="../../Drives/index.php">Drives Homepage</a>
+                  <a href="../Drives/index.php">Drives Homepage</a>
                 </li>
                 <li>
                   <a href="Notif.php">Notification</a>
                 </li>
-                <li>
-                  <a href="Change Password.php">Change Password</a>
-                  </li>
               </ul>  
             </nav> 
           </div>
@@ -153,7 +147,7 @@
                     <p>Latest Drive Result Overview</p> 
                     <?php			
 $con=mysqli_connect('localhost','root','');
-mysqli_select_db($con,'details');
+mysqli_select_db($con,'placement');
 $RESULT=mysqli_query($con,"SELECT DISTINCT count(CompanyName) from addpdrive where PVenue LIKE '%CIT%' AND YEAR(Date)=YEAR(NOW())");
 $data=mysqli_fetch_assoc($RESULT);
 echo "<br><br><h3>Companies In Our Campus In This Year&nbsp:&nbsp";

@@ -1,21 +1,24 @@
 <?php
- $host = "localhost";
- $user = "root";
- $pwd = "";
- $db= "db_records";
-
-
- $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
- $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
-
 function sanitized($string){
-	$string = mysqli_real_escape_string($GLOBALS['$conn'],trim($string));
+	$host = "localhost";
+	$user = "root";
+	$pwd = "";
+	$db= "db_records";
+	$conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+	$seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+   
+	$string = mysqli_real_escape_string($conn,trim($string));
 	return $string;
 }
 
 function loaddata($tablename){
-
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * FROM $tablename");
+	$host = "localhost";
+	$user = "root";
+	$pwd = "";
+	$db= "db_records";
+	$conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+	$seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * FROM $tablename");
 	while($row=mysqli_fetch_assoc($sel)){
 		extract($row);
 
@@ -38,8 +41,13 @@ function loaddata($tablename){
 }
 
 function validate($string,$fieldname,$tablename){
-
-	$val = mysqli_query($GLOBALS['$conn'],"SELECT $fieldname from $tablename where $fieldname='$string' ");
+ $host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$val = mysqli_query($conn,"SELECT $fieldname from $tablename where $fieldname='$string' ");
 
 	$num = mysqli_num_rows($val);
 
@@ -52,14 +60,19 @@ function validate($string,$fieldname,$tablename){
 }
 
 function validate_edit($string,$id,$tablename,$fieldname,$fieldnameid){
-	$val = mysqli_query($GLOBALS['$conn'],"SELECT $fieldname FROM $tablename where $fieldname='$string' and $fieldnameid='$id' ");
+ $host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$val = mysqli_query($conn,"SELECT $fieldname FROM $tablename where $fieldname='$string' and $fieldnameid='$id' ");
 	$num = mysqli_num_rows($val);
-
 	if($num==1){
 		echo 'available';
 	}
 	else{
-		$val2 = mysqli_query($GLOBALS['$conn'],"SELECT $fieldname from $tablename where $fieldname='$string' ");
+		$val2 = mysqli_query($conn,"SELECT $fieldname from $tablename where $fieldname='$string' ");
 		$num2 = mysqli_num_rows($val2);
 		if($num2==1){
 			echo 'not';
@@ -71,7 +84,15 @@ function validate_edit($string,$id,$tablename,$fieldname,$fieldnameid){
 }
 
 function validate_section($section,$grade){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * from year_level where year_level='$grade' and section='$section' ");
+$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * from year_level where year_level='$grade' and section='$section' ");
 	$num = mysqli_num_rows($sel);
 	if($num==1){
 		echo 'failed';
@@ -82,13 +103,21 @@ function validate_section($section,$grade){
 }
 
 function validate_section_edit($section,$grade,$id){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * from year_level where year_level='$grade' and section='$section' and year_id='$id' ");
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * from year_level where year_level='$grade' and section='$section' and year_id='$id' ");
 	$num = mysqli_num_rows($sel);
 	if($num==1){
 		echo 'available';
 	}
 	else{
-		$sel = mysqli_query($GLOBALS['$conn'],"SELECT * from year_level where year_level='$grade' and section='$section'");
+		$sel = mysqli_query($conn,"SELECT * from year_level where year_level='$grade' and section='$section'");
 		$num = mysqli_num_rows($sel);
 		if($num==1){
 			echo "failed";
@@ -100,14 +129,30 @@ function validate_section_edit($section,$grade,$id){
 }
 
 function addquery($data,$tablename){
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
 
 	$fieldname = array_keys($data);
 
-	$add = mysqli_query($GLOBALS['$conn'],"INSERT INTO ".$tablename."(".implode(",", $fieldname).") VALUES('".implode("','", $data)."')");
+	$add = mysqli_query($conn,"INSERT INTO ".$tablename."(".implode(",", $fieldname).") VALUES('".implode("','", $data)."')");
 }
 
 function get_content($id,$tablename,$fieldname){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * from $tablename where $fieldname='$id' ");
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * from $tablename where $fieldname='$id' ");
 
 	while($row=mysqli_fetch_assoc($sel)){
 		extract($row);
@@ -130,13 +175,21 @@ function get_content($id,$tablename,$fieldname){
 }
 
 function editquery($id,$fieldname,$data,$tablename){
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
 	
 	foreach ($data as $key => $value) {
 		$val[] = "$key='$value' ";
 	}
 	$updatedata = implode(",", $val); 
 
-	$edit = mysqli_query($GLOBALS['$conn'],"UPDATE $tablename SET $updatedata WHERE $fieldname='$id' " );
+	$edit = mysqli_query($conn,"UPDATE $tablename SET $updatedata WHERE $fieldname='$id' " );
 
 	if($edit==true){
 		echo 'success';
@@ -147,10 +200,18 @@ function editquery($id,$fieldname,$data,$tablename){
 }
 
 function deletequery($id,$tablename,$fieldname){
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
 	$count = count($id);
 	$var = 0;
 	foreach ($id as $subject) {
-		$del = mysqli_query($GLOBALS['$conn'],"DELETE From $tablename where $fieldname='$subject' ");
+		$del = mysqli_query($conn,"DELETE From $tablename where $fieldname='$subject' ");
 		if($del==true){
 			$var +=1;
 		}
@@ -165,7 +226,15 @@ function deletequery($id,$tablename,$fieldname){
 }
 
 function dropdown($tablename){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * from $tablename");
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * from $tablename");
 			echo '<option value=0>Select Year Level</option>';
 	while($row=mysqli_fetch_assoc($sel)){
 		extract($row);
@@ -175,11 +244,19 @@ function dropdown($tablename){
 }
 
 function getstudentbyyear($sy){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * from students");
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * from students");
 
 	while($row=mysqli_fetch_assoc($sel)){
 		extract($row);
-		$sel2 = mysqli_query($GLOBALS['$conn'],"SELECT * FROM student_year_level as syl join year_level as yl on syl.year_id=yl.year_id where syl.stud_id='$stud_id' and syl.schoolyear='$sy'");
+		$sel2 = mysqli_query($conn,"SELECT * FROM student_year_level as syl join year_level as yl on syl.year_id=yl.year_id where syl.stud_id='$stud_id' and syl.schoolyear='$sy'");
 		$num = mysqli_num_rows($sel2);
 		if($num==0){
 			$data[] = array('<input type="checkbox" name="stud_id" id="stud_id" value='.$stud_id.'>',$stud_no,$stud_fname.' '.$stud_mname.' '.$stud_lname);
@@ -196,14 +273,30 @@ function getstudentbyyear($sy){
 }
 
 function enroll_student($year,$sy,$stud_id){
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
 
 	foreach ($stud_id as $id) {
-		$insert = mysqli_query($GLOBALS['$conn'],"INSERT INTO student_year_level (stud_id,year_id,schoolyear) values ('$id','$year','$sy') ");
+		$insert = mysqli_query($conn,"INSERT INTO student_year_level (stud_id,year_id,schoolyear) values ('$id','$year','$sy') ");
 	}
 }
 
 function getstudentbyyearsy($sy,$year){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * from student_year_level as syl join students as s on syl.stud_id=s.stud_id join year_level as yl on syl.year_id=yl.year_id where syl.schoolyear='$sy' and syl.year_id='$year' ");
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * from student_year_level as syl join students as s on syl.stud_id=s.stud_id join year_level as yl on syl.year_id=yl.year_id where syl.schoolyear='$sy' and syl.year_id='$year' ");
 
 	while($row=mysqli_fetch_assoc($sel)){
 		extract($row);
@@ -214,11 +307,19 @@ function getstudentbyyearsy($sy,$year){
 }
 
 function getdatachart($sy){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * FROM year_level");
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * FROM year_level");
 
 	while($row=mysqli_fetch_assoc($sel)){
 		extract($row);
-		$sel2 = mysqli_query($GLOBALS['$conn'],"SELECT * from student_year_level where year_id='$year_id' and schoolyear='$sy' ");
+		$sel2 = mysqli_query($conn,"SELECT * from student_year_level where year_id='$year_id' and schoolyear='$sy' ");
 		$num = mysqli_num_rows($sel2);
 		$data[] = array('y'=>$year_level,'a'=>$num);
 	}
@@ -227,7 +328,15 @@ function getdatachart($sy){
 }
 
 function get_year_name($id){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * from year_level where year_id='$id' ");
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * from year_level where year_id='$id' ");
 	while($row=mysqli_fetch_assoc($sel)){
 		extract($row);
 		echo $year_level.'- '.$section;
@@ -235,13 +344,21 @@ function get_year_name($id){
 }
 
 function add_subjects_grades($grade,$subject){
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
 	$count = count($subject);
 	$var = 0;
 	foreach ($subject as $subj_id) {
-		$sel = mysqli_query($GLOBALS['$conn'],"SELECT * from year_level_subject where subj_id='$subj_id' and year_id='$grade' ");
+		$sel = mysqli_query($conn,"SELECT * from year_level_subject where subj_id='$subj_id' and year_id='$grade' ");
 		$num = mysqli_num_rows($sel);
 		if($num==0){
-			$insert = mysqli_query($GLOBALS['$conn'],"INSERT INTO year_level_subject (subj_id,year_id) values ('$subj_id','$grade') ");
+			$insert = mysqli_query($conn,"INSERT INTO year_level_subject (subj_id,year_id) values ('$subj_id','$grade') ");
 			if($insert==true){
 				$var +=1;
 			}
@@ -257,7 +374,15 @@ function add_subjects_grades($grade,$subject){
 }
 
 function load_year_subjects($id){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * FROM year_level_subject as yls join subjects as s on yls.subj_id=s.subj_id  where yls.year_id='$id' ");
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * FROM year_level_subject as yls join subjects as s on yls.subj_id=s.subj_id  where yls.year_id='$id' ");
 
 	while($row=mysqli_fetch_assoc($sel)){
 		extract($row);
@@ -267,8 +392,16 @@ function load_year_subjects($id){
 }
 
 function get_print_subjects($id){
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
 	$totalunits = 0;
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * FROM year_level_subject as yls join subjects as s on yls.subj_id=s.subj_id  where yls.year_id='$id' ");
+	$sel = mysqli_query($conn,"SELECT * FROM year_level_subject as yls join subjects as s on yls.subj_id=s.subj_id  where yls.year_id='$id' ");
 	while($row=mysqli_fetch_assoc($sel)){
 		extract($row);
 		echo '<tr>';
@@ -292,7 +425,15 @@ function get_print_subjects($id){
 }
 
 function get_print_students($year,$sy){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * from student_year_level as syl join students as s on syl.stud_id=s.stud_id join year_level as yl on syl.year_id=yl.year_id where syl.schoolyear='$sy' and syl.year_id='$year' ");
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * from student_year_level as syl join students as s on syl.stud_id=s.stud_id join year_level as yl on syl.year_id=yl.year_id where syl.schoolyear='$sy' and syl.year_id='$year' ");
 
 	while($row=mysqli_fetch_assoc($sel)){
 		extract($row);
@@ -307,13 +448,21 @@ function get_print_students($year,$sy){
 }
 
 function generate_schedule($sy,$year_id,$room){
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
 
 	$time = array('7:30-8:30','8:30-9:30','10:00-11:00','11:00-12:00','1:00-2:00','2:00-3:00','3:30-4:30','7:30-8:30','8:30-9:30','10:00-11:00','11:00-12:00','1:00-2:00','2:00-3:00','3:30-4:30');
 	$timecount = count($time);
 	$mwf = "mwf";
 	$tth = "tth";
 
-	$val = mysqli_query($GLOBALS['$conn'],"SELECT * FROM schedule as sched join year_level_subject as yls on sched.yls_id=yls.yls_id where  sched.schoolyear='$sy' and yls.year_id='$year_id' ");
+	$val = mysqli_query($conn,"SELECT * FROM schedule as sched join year_level_subject as yls on sched.yls_id=yls.yls_id where  sched.schoolyear='$sy' and yls.year_id='$year_id' ");
 	$num = mysqli_num_rows($val);
 
 
@@ -324,21 +473,21 @@ function generate_schedule($sy,$year_id,$room){
                   </div>';
 	}
 	else{
-		$yls = mysqli_query($GLOBALS['$conn'],"SELECT * from year_level_subject where year_id='$year_id'");
+		$yls = mysqli_query($conn,"SELECT * from year_level_subject where year_id='$year_id'");
 		$x = 0;
 		while($row=mysqli_fetch_assoc($yls)){
 			extract($row);
 			
-			$sel = mysqli_query($GLOBALS['$conn'],"SELECT * FROM schedule as sched join year_level_subject as yls on sched.yls_id=yls.yls_id where sched.days='$mwf' and sched.schoolyear='$sy' and yls.year_id='$year_id' ");
+			$sel = mysqli_query($conn,"SELECT * FROM schedule as sched join year_level_subject as yls on sched.yls_id=yls.yls_id where sched.days='$mwf' and sched.schoolyear='$sy' and yls.year_id='$year_id' ");
 			$num = mysqli_num_rows($sel);
 			if($num<7){
 				$timehr = $time[$x];
-				$ins = mysqli_query($GLOBALS['$conn'],"INSERT INTO schedule (timehr,days,schoolyear,yls_id,room) VALUEs ('$timehr','$mwf','$sy','$yls_id','$room') ");
+				$ins = mysqli_query($conn,"INSERT INTO schedule (timehr,days,schoolyear,yls_id,room) VALUEs ('$timehr','$mwf','$sy','$yls_id','$room') ");
 				$x +=1;
 			}
 			else{
 				$timehr = $time[$x];
-				$ins = mysqli_query($GLOBALS['$conn'],"INSERT INTO schedule (timehr,days,schoolyear,yls_id,room) VALUEs ('$timehr','$tth','$sy','$yls_id','$room') ");
+				$ins = mysqli_query($conn,"INSERT INTO schedule (timehr,days,schoolyear,yls_id,room) VALUEs ('$timehr','$tth','$sy','$yls_id','$room') ");
 				$x +=1;
 			}	
 			
@@ -349,7 +498,15 @@ function generate_schedule($sy,$year_id,$room){
 }
 
 function get_schedule($sy,$year_id){
-	$sel = mysqli_query($GLOBALS['$conn'],"SELECT * FROM schedule as sched join year_level_subject as yls on sched.yls_id=yls.yls_id join subjects as s on yls.subj_id=s.subj_id where sched.schoolyear='$sy' and yls.year_id='$year_id' ");
+	$host = "localhost";
+ $user = "root";
+ $pwd = "";
+ $db= "db_records";
+
+
+ $conn = mysqli_connect($host,$user,$pwd) or die ("Error Connecting to Database");
+ $seldb = mysqli_select_db($conn,$db) or die ("Error Selectign Database");
+	$sel = mysqli_query($conn,"SELECT * FROM schedule as sched join year_level_subject as yls on sched.yls_id=yls.yls_id join subjects as s on yls.subj_id=s.subj_id where sched.schoolyear='$sy' and yls.year_id='$year_id' ");
 	echo '<table class="table table-bordered table-hover">';
 	echo '<thead>
 		  <tr>
@@ -371,7 +528,7 @@ function get_schedule($sy,$year_id){
 			echo '<td>TTH</td>';
 		}
 		echo '<td>'.$subj_code.' '.$subj_desc.'</td>';
-		$teach = mysqli_query($GLOBALS['$conn'],"SELECT * FROM teachers");
+		$teach = mysqli_query($conn,"SELECT * FROM teachers");
 		echo '<td><select id="selteacher" onchange="updateteacher('.$sched_id.')" >
 			  <option value=0>Select Teacher</option>
 

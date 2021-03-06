@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if(isset($_SESSION["priusername"])){
+  if(isset($_SESSION["staffemail"])){
   }
    else
 	   header("location: index.php");
@@ -39,7 +39,7 @@
           <div class="square"></div>
           <?php
 		  $Welcome = "Welcome";
-          echo "<h1>" . $Welcome . "<br>". $_SESSION['priusername']. "</h1>";
+          echo "<h1>" . $Welcome . "<br>". $_SESSION['staffemail']. "</h1>";
 		 echo "<br>";
 		
 		  ?>
@@ -74,9 +74,7 @@
           <div class="row">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
               <ul class="text-uppercase">
-                  <li>
-                  <a href="../../Homepage/index.php">Home CIT-PMS</a>
-                </li>
+                 
                 <li>
                   <a href="../../Drives/index.php">Drives Homepage</a>
                 </li>
@@ -117,7 +115,7 @@
 
 $num_rec_per_page=15;
 $cn=mysqli_connect('localhost','root','');
-mysqli_select_db($cn,'details');
+mysqli_select_db($cn,'placement');
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
 $start_from = ($page-1) * $num_rec_per_page; 
 $sql = "SELECT * FROM basicdetails where Approve='1' DESC LIMIT $start_from, $num_rec_per_page"; 
@@ -177,7 +175,7 @@ print "</tr>";
 		
 $num_rec_per_page=15;
 $con=mysqli_connect('localhost','root','');
-mysqli_select_db($con,'details');
+mysqli_select_db($con,'placement');
 $sql1 = "SELECT * FROM basicdetails where Approve='1'"; 
 $rs_result = mysqli_query($con,$sql1); //run the query
 $total_records = mysqli_num_rows($rs_result);  //count number of records

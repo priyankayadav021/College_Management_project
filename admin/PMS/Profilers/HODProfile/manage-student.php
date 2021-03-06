@@ -119,11 +119,15 @@ $num_rec_per_page=15;
 $connect=mysqli_connect('localhost','root','');
 mysqli_select_db($connect,'details');
 if (isset($_GET['page'])) { $page  = $_GET['page']; } else { $page=1; }; 
-$start_from = ($page-1) * $num_rec_per_page; 
-$sql = "SELECT * FROM basicdetails WHERE Approve=0 and Branch='$p' LIMIT $start_from, $num_rec_per_page"; 
-$rs_result = mysqli_query($connect,$sql); //run the query
+$start_from = (($page-1) * $num_rec_per_page)+1; 
+echo "$p   ";
+echo"$start_from   ";
+echo "$num_rec_per_page";
+$sql = "SELECT * FROM `basicdetails` WHERE Approve='0' AND Branch='$p' LIMIT $start_from, $num_rec_per_page;"; 
+$rs_result = mysqli_query($connect,$sql,$resultmode = MYSQLI_STORE_RESULT); //run the query
 $row = mysqli_fetch_assoc($rs_result);
-while ($row!=0) 
+if($row){
+while ($row) 
 { 
 
             print "<tr>"; 
@@ -145,8 +149,11 @@ print "<td>" . $row['DetainYears'] . "</td>";
 
 
 print "</tr>"; 
-
+}}
+else {
+  echo"No student available";
 }
+
 ?> 
 
                 </tbody>

@@ -58,10 +58,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<img src="images/menu.png" alt="">
 						</span>
 						<ul class="nav1">
-							
-							<li class="hvr-sweep-to-bottom">
-								<a href="../Homepage/index.php">CIT-PMS<i>Goto Placement Homepage</i></a>
-							</li>
 							<li class="hvr-sweep-to-bottom">
 								<a href="index.php">Home<i>Get the Overview of the Site</i></a>
 								</li>
@@ -268,9 +264,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-3 footer-right  wow fadeInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
 					<h6 style="color: white">Channabasaveshwara Institute of Technology</h6>
-					<h4>
-						<a href="../Homepage/index.php" style="color: white">Placement Management System</a>
-					</h4>
+					
 					<p></p>
 				</div>
 				<div class="clearfix"></div>

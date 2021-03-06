@@ -1,7 +1,7 @@
 <?php
   session_start();
-  if(isset($_SESSION["priusername"])){
-    echo "Welcome, ".$_SESSION['priusername']."!";
+  if(isset($_SESSION["staffemail"])){
+    echo "Welcome, ".$_SESSION['staffemail']."!";
   }
    else {
 	   header("location: index.php");
@@ -40,7 +40,7 @@
           <div class="square"></div>
          <?php
 		  $Welcome = "Welcome";
-          echo "<h1>" . $Welcome . "<br>". $_SESSION['priusername']. "</h1>";
+          echo "<h1>" . $Welcome . "<br>". $_SESSION['staffemail']. "</h1>";
 		  ?>
         </header>
         <div class="profile-photo-container">
@@ -119,7 +119,7 @@
 		
 $num_rec_per_page=15;
 $con=mysqli_connect('localhost','root','');
-mysqli_select_db($con,'details');
+mysqli_select_db($con,'placement');
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
 $start_from = ($page-1) * $num_rec_per_page; 
 $sql = "SELECT * FROM basicdetails where Approve='1' ORDER BY ApprovalDate DESC LIMIT $start_from, $num_rec_per_page"; 
@@ -167,7 +167,7 @@ print "</tr>";
 		
 $num_rec_per_page=15;
 $cn=mysqli_connect('localhost','root','');
-mysqli_select_db($cn,'details');
+mysqli_select_db($cn,'placement');
 $sql1 = "SELECT * FROM basicdetails where Approve='1' "; 
 $rs_result = mysqli_query($cn,$sql1); //run the query
 $total_records = mysqli_num_rows($rs_result);  //count number of records
