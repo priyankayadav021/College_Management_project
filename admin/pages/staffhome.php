@@ -13,7 +13,7 @@
       <a className="nav-link text-light text-center" href="#">Student</a>
     </li>
     <li className="nav-item">
-      <a className="nav-link text-light text-center" href="#">Exam Section</a>
+      <a className="nav-link text-light text-center" href="../staff/exam/dash.php">Exam Section</a>
     </li>
     <li className="nav-item">
       <a className="nav-link text-light text-center" href="../staff/PriProfile/index1.php">Placement Section</a>

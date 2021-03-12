@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <head><title>Home</title></head> 
-<?php 
-include('studentmain.php');?>
-<link href="../css/Demo.css" rel="stylesheet" type="text/css"/>
+<?php include('staffmain.php');?>
+<link href="./css/Demo.css" rel="stylesheet" type="text/css"/>
             <div>
             <div className="sidebar bg-dark">          
   <ul className="nav navbar-nav widd hell bg-dark d-inline-block pos">
@@ -14,10 +13,10 @@ include('studentmain.php');?>
       <a className="nav-link text-light text-center" href="#">Student</a>
     </li>
     <li className="nav-item">
-      <a className="nav-link text-light text-center" href="../student/exam/account.php">Exam Section</a>
+      <a className="nav-link text-light text-center" href="dash.php">Exam Section</a>
     </li>
     <li className="nav-item">
-      <a className="nav-link text-light text-center" href="../student/SProfile/index1.php">Placement Section</a>
+      <a className="nav-link text-light text-center" href="../PriProfile/index1.php">Placement Section</a>
     </li>
     <li className="nav-item">
       <a className="nav-link text-light text-center" href="#">E-Library</a>
