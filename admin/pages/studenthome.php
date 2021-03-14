@@ -14,6 +14,9 @@ include('studentmain.php');?>
       <a className="nav-link text-light text-center" href="#">Student</a>
     </li>
     <li className="nav-item">
+      <a className="nav-link text-light text-center" href="../student/student/index.php">Attendence</a>
+    </li>
+    <li className="nav-item">
       <a className="nav-link text-light text-center" href="../student/exam/account.php">Exam Section</a>
     </li>
     <li className="nav-item">

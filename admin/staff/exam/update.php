@@ -1,7 +1,7 @@
 <?php
 include_once 'dbConnection.php';
 session_start();
-$email=$_SESSION['email'];
+$email=$_SESSION['staffemail'];
 //delete feedback
 if(isset($_SESSION['key'])){
 if(@$_GET['fdid'] && $_SESSION['key']=='sunny7785068889') {
