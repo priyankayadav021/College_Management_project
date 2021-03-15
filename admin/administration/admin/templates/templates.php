@@ -208,6 +208,16 @@ function headertemplate($title){
               <a href="../PProfile/index1.php">
                 <i class="glyphicon glyphicon-list-alt"></i> <span>Placement</span>
               </a>
+              <?php if($active=="placement"){ 
+              echo '<li class="active">';
+            }
+            else{
+              echo '<li>';
+            }
+            ?>
+              <a href="../LibrarySystem/home.php">
+                <i class="glyphicon glyphicon-list-alt"></i> <span>Library</span>
+              </a>
             </li>
           </ul>
         </section>
