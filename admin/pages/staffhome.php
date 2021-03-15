@@ -10,7 +10,7 @@
       <a className="nav-link text-light text-center" href="#">Faculty</a>
     </li>
     <li className="nav-item">
-      <a className="nav-link text-light text-center" href="#">Student</a>
+      <a className="nav-link text-light text-center" href="../staff/srms/dashboard.php">Student Result</a>
     </li>
     <li className="nav-item">
       <a className="nav-link text-light text-center" href="../staff/teacher/index.php">Attendence</a>

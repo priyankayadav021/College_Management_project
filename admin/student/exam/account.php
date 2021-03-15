@@ -40,7 +40,7 @@ else
 $semail=$_SESSION['semail'];
 
 include_once 'dbConnection.php';
-echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="account.php?q=1" class="log log1">'.$name.'</a>&nbsp;|&nbsp;<a href="logout.php?q=account.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
+echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="account.php?q=1" class="log log1">'.$semail.'</a>';
 }?>
 </div>
 </div></div>
@@ -57,7 +57,6 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><b>Netcamp</b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -65,7 +64,7 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
       <ul class="nav navbar-nav">
         <li <?php if(@$_GET['q']==1) echo'class="active"'; ?> ><a href="account.php?q=1"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home<span class="sr-only">(current)</span></a></li>
         <li <?php if(@$_GET['q']==2) echo'class="active"'; ?>><a href="account.php?q=2"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;History</a></li>
-			<li class="pull-right"> <a href="logout.php?q=account.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
+		
 		</ul>
             <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -93,6 +92,7 @@ while($row = mysqli_fetch_array($result)) {
 	$sahi = $row['sahi'];
   $time = $row['time'];
 	$eid = $row['eid'];
+ echo "$eid";
 $q12=mysqli_query($con,"SELECT score FROM history WHERE eid='$eid' AND email='$semail'" )or die('Error98');
 $rowcount=mysqli_num_rows($q12);	
 if($rowcount == 0){
@@ -109,7 +109,7 @@ $c=0;
 echo '</table></div></div>';
 
 }?>
-<!--<span id="countdown" class="timer"></span>
+<!--span id="countdown" class="timer"></span>
 <script>
 var seconds = 40;
     function secondPassed() {
@@ -127,7 +127,7 @@ var seconds = 40;
     }
     }
 var countdownTimer = setInterval('secondPassed()', 1000);
-</script>-->
+</script-->
 
 <!--home closed-->
 
@@ -192,7 +192,7 @@ echo '</table></div>';
 //history start
 if(@$_GET['q']== 2) 
 {
-$q=mysqli_query($con,"SELECT * FROM history WHERE semail='$semail' ORDER BY date DESC " )or die('Error197');
+$q=mysqli_query($con,"SELECT * FROM history WHERE email='$semail' ORDER BY date DESC " )or die('Error197');
 echo  '<div class="panel title">
 <table class="table table-striped title1" >
 <tr style="color:red"><td><b>S.N.</b></td><td><b>Quiz</b></td><td><b>Question Solved</b></td><td><b>Right</b></td><td><b>Wrong<b></td><td><b>Score</b></td>';
